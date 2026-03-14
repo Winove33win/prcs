@@ -1,0 +1,58 @@
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import NotFound from "@/pages/NotFound";
+import { Route, Switch } from "wouter";
+import ErrorBoundary from "./components/ErrorBoundary";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import Home from "./pages/Home";
+import AreasAtuacao from "./pages/AreasAtuacao";
+import PropriedadeIntelectual from "./pages/PropriedadeIntelectual";
+import RegistroMarca from "./pages/RegistroMarca";
+import RegistroPatente from "./pages/RegistroPatente";
+import DireitoAutoral from "./pages/DireitoAutoral";
+import RegistroSoftware from "./pages/RegistroSoftware";
+import Assessoria from "./pages/Assessoria";
+import SobreNos from "./pages/SobreNos";
+
+function Router() {
+  // make sure to consider if you need authentication for certain routes
+  return (
+    <Switch>
+      <Route path={"/"} component={Home} />
+      <Route path={"/areas-atuacao"} component={AreasAtuacao} />
+      <Route path={"/propriedade-intelectual"} component={PropriedadeIntelectual} />
+      <Route path={"/registro-marca"} component={RegistroMarca} />
+      <Route path={"/registro-patente"} component={RegistroPatente} />
+      <Route path={"/direito-autoral"} component={DireitoAutoral} />
+      <Route path={"/registro-software"} component={RegistroSoftware} />
+      <Route path={"/assessoria-juridica"} component={Assessoria} />
+      <Route path={"/sobre-nos"} component={SobreNos} />
+      <Route path={"/404"} component={NotFound} />
+      {/* Final fallback route */}
+      <Route component={NotFound} />
+    </Switch>
+  );
+}
+
+// NOTE: About Theme
+// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
+//   to keep consistent foreground/background color across components
+// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
+
+function App() {
+  return (
+    <ErrorBoundary>
+      <ThemeProvider
+        defaultTheme="light"
+        // switchable
+      >
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
+  );
+}
+
+export default App;

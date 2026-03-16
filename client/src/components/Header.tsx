@@ -28,7 +28,7 @@ export default function Header() {
           <Link href="/">
             <a className="flex items-center gap-2 hover:opacity-80 transition-opacity">
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663337236500/ccBAHDKviWFtczny.png"
+                src="/assets/logo-prcs.svg"
                 alt="PRCS Advogados"
                 className="h-24 w-auto"
               />

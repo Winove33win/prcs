@@ -1,21 +1,34 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath, pathToFileURL } from "url";
+import express from "express";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const buildCandidates = [
-  path.resolve(__dirname, "Dist", "index.js"),
-  path.resolve(__dirname, "dist", "index.js"),
-];
+const app = express();
+const PORT = Number.parseInt(process.env.PORT || "3000", 10);
+const HOST = "0.0.0.0";
+const distPath = path.join(__dirname, "dist");
 
-const entrypoint = buildCandidates.find(candidate => fs.existsSync(candidate));
+app.use(
+  express.static(distPath, {
+    index: "index.html",
+    extensions: ["html"],
+  })
+);
 
-if (!entrypoint) {
-  console.error("Build não encontrado. Execute `npm run build` para gerar /Dist antes de iniciar no Plesk.");
-  process.exit(1);
-}
+app.get("/favicon.ico", (_req, res) => {
+  res.sendFile(path.join(distPath, "favicon.ico"), error => {
+    if (error) {
+      res.status(204).end();
+    }
+  });
+});
 
-process.env.NODE_ENV ||= "production";
-await import(pathToFileURL(entrypoint).href);
+app.get("*", (_req, res) => {
+  res.sendFile(path.join(distPath, "index.html"));
+});
+
+app.listen(PORT, HOST, () => {
+  console.log(`App running on http://${HOST}:${PORT}`);
+});

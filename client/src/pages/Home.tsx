@@ -76,44 +76,44 @@ export default function Home() {
     {
       name: 'Carla Ribeiro',
       role: 'CEO',
-      avatar: 'https://via.placeholder.com/80/0D204A/FFFFFF?text=CR',
+      avatar: '/assets/avatar-default.svg',
       text: 'Contar com a PRCS Advogados foi um divisor de águas para minha empresa. Eles não apenas garantiram a segurança jurídica do nosso negócio, como também nos ajudaram a proteger nossa propriedade intelectual com agilidade e eficiência.',
     },
     {
       name: 'Rafael Kawori',
       role: 'Gerente',
-      avatar: 'https://via.placeholder.com/80/0D204A/FFFFFF?text=RK',
+      avatar: '/assets/avatar-default.svg',
       text: 'A consultoria jurídica da PRCS é excepcional. Com soluções claras e um atendimento humanizado, conseguimos resolver questões contratuais complexas e focar no crescimento do nosso negócio.',
     },
     {
       name: 'Ana Silva',
       role: 'Diretora de Marca',
-      avatar: 'https://via.placeholder.com/80/0D204A/FFFFFF?text=AS',
+      avatar: '/assets/avatar-default.svg',
       text: 'O registro de marca com a PRCS foi rápido e seguro. Sua equipe nos orientou em cada etapa do processo e garantiu que nossa marca estivesse completamente protegida. Recomendo para qualquer empresa que deseja proteger sua identidade.',
     },
     {
       name: 'Márcio Ferreira',
       role: 'Founder',
-      avatar: 'https://via.placeholder.com/80/0D204A/FFFFFF?text=MF',
+      avatar: '/assets/avatar-default.svg',
       text: 'Precisava registrar uma patente de uma invenção inovadora e a PRCS fez um trabalho impecável. Desde a análise de anterioridade até a redação final, tudo foi profissional e eficiente.',
     },
     {
       name: 'Juliana Costa',
       role: 'Gerente de PI',
-      avatar: 'https://via.placeholder.com/80/0D204A/FFFFFF?text=JC',
+      avatar: '/assets/avatar-default.svg',
       text: 'A PRCS Advogados nos ajudou a proteger toda a nossa cartéra de propriedade intelectual. O monitoramento 24/7 de marcas nos dá tranquilidade e confiabilidade total no mercado.',
     },
   ];
 
   const registeredBrands = [
-    { name: 'TechInova', category: 'Tecnologia', logo: 'https://via.placeholder.com/80/0D204A/FFFFFF?text=TechInova' },
-    { name: 'GreenLife', category: 'Sustentabilidade', logo: 'https://via.placeholder.com/80/0D204A/FFFFFF?text=GreenLife' },
-    { name: 'ProDental', category: 'Saúde', logo: 'https://via.placeholder.com/80/0D204A/FFFFFF?text=ProDental' },
-    { name: 'FashionHub', category: 'Moda', logo: 'https://via.placeholder.com/80/0D204A/FFFFFF?text=FashionHub' },
-    { name: 'EcoPackaging', category: 'Embalagem', logo: 'https://via.placeholder.com/80/0D204A/FFFFFF?text=EcoPackaging' },
-    { name: 'DigitalMax', category: 'Software', logo: 'https://via.placeholder.com/80/0D204A/FFFFFF?text=DigitalMax' },
-    { name: 'NutriBalance', category: 'Alimentos', logo: 'https://via.placeholder.com/80/0D204A/FFFFFF?text=NutriBalance' },
-    { name: 'SmartHome', category: 'IoT', logo: 'https://via.placeholder.com/80/0D204A/FFFFFF?text=SmartHome' },
+    { name: 'TechInova', category: 'Tecnologia', logo: '/assets/brand-default.svg' },
+    { name: 'GreenLife', category: 'Sustentabilidade', logo: '/assets/brand-default.svg' },
+    { name: 'ProDental', category: 'Saúde', logo: '/assets/brand-default.svg' },
+    { name: 'FashionHub', category: 'Moda', logo: '/assets/brand-default.svg' },
+    { name: 'EcoPackaging', category: 'Embalagem', logo: '/assets/brand-default.svg' },
+    { name: 'DigitalMax', category: 'Software', logo: '/assets/brand-default.svg' },
+    { name: 'NutriBalance', category: 'Alimentos', logo: '/assets/brand-default.svg' },
+    { name: 'SmartHome', category: 'IoT', logo: '/assets/brand-default.svg' },
   ];
 
   const stats = [
@@ -181,7 +181,7 @@ export default function Home() {
             </div>
             <div className="hidden lg:flex items-center justify-center relative overflow-hidden rounded-2xl shadow-2xl h-96 bg-gradient-to-br from-primary/20 to-primary/40">
               <img
-                src="https://private-us-east-1.manuscdn.com/sessionFile/ip5fTE90USXueux1AQiGlU/sandbox/TBAmQkaRzN32Vn4zKWXCME-img-1_1772053387000_na1fn_aGVyby1vZmZpY2UtcHJvZmVzc2lvbmFs.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvaXA1ZlRFOTBVU1h1ZXV4MUFRaUdsVS9zYW5kYm94L1RCQW1Ra2FSek4zMlZuNHpLV1hDTUUtaW1nLTFfMTc3MjA1MzM4NzAwMF9uYTFmbl9hR1Z5YnkxdlptWnBZMlV0Y0hKdlptVnpjMmx2Ym1Gcy5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=gBwvGbs5Ph2u9bNNRolR9kl7GN-NbueHkjBg3GRWHwnjpWdIPsL2p5beWN1QIlA~un6rUJqvxDDxFLEX2ZFmnuzKnzZEbAB8fm7nZq7~Lvvv52cuRcHcLEEUs3bebkLYr1UtNJ74xiou927aSAHOrAlsMIO9F8vNSKefX60TW8cSBN3Q56SVFRP~a-3YyRyiWOjjAThrvmAnqTfegvM95o4SMkYcFNsom6F0Y0DpotYOnYrom2EhMrdqKP5Z4cteJDAJBZw~Z-mi-pF2N6GqzSZGSh6yge5OBlAubgV1LGcF1UxMfPBQ7ToCfe~-200Xylp1U7NH6a6QzZ6tBLWaZw__"
+                src="/assets/hero-office.svg"
                 alt="Escritório PRCS Advogados"
                 className="w-full h-full object-cover"
               />
@@ -345,7 +345,7 @@ export default function Home() {
         <div className="absolute top-8 right-8 flex flex-col gap-6">
           <div className="text-center">
             <img
-              src="https://via.placeholder.com/100/0D204A/FFFFFF?text=ABAPI"
+              src="/assets/badge-abapi.svg"
               alt="ABAPI - Associação Brasileira de Propriedade Intelectual"
               className="w-24 h-24 mx-auto mb-2 rounded-lg shadow-lg"
             />
@@ -353,7 +353,7 @@ export default function Home() {
           </div>
           <div className="text-center">
             <img
-              src="https://via.placeholder.com/100/0D204A/FFFFFF?text=OAB"
+              src="/assets/badge-oab.svg"
               alt="OAB - Ordem dos Advogados do Brasil"
               className="w-24 h-24 mx-auto mb-2 rounded-lg shadow-lg"
             />
@@ -376,7 +376,7 @@ export default function Home() {
                 </p>
                 <div className="flex items-center gap-4">
                   <img
-                    src="https://via.placeholder.com/80/0D204A/FFFFFF?text=Paulo"
+                    src="/assets/paulo-perfil.svg"
                     alt="Dr. Paulo R C Sousa"
                     className="w-20 h-20 rounded-full border-3 border-primary flex-shrink-0"
                   />

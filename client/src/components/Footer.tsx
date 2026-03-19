@@ -1,104 +1,117 @@
-import {
-  ArrowUpRight,
-  Instagram,
-  Mail,
-  MapPin,
-  Smartphone,
-} from "lucide-react";
-
-const footerLinks = [
-  { label: "Moodboard editorial", href: "#raciocinio" },
-  { label: "Mapa de páginas", href: "#conclusao" },
-  { label: "Componentes-chave", href: "#funcionalidades" },
-  { label: "JSON simplificado", href: "#json" },
-];
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
+  const serviceLinks = [
+    { label: 'Registro de Marca', href: '/marca' },
+    { label: 'Registro de Patente', href: '/patente' },
+    { label: 'Direito Autoral', href: '/autoral' },
+    { label: 'Assessoria Jurídica', href: '/assessoria' },
+  ];
+
   return (
-    <footer className="border-t border-border/70 bg-[#1a1714] text-white">
-      <div className="container py-16">
-        <div className="grid gap-10 lg:grid-cols-[1.3fr_0.9fr_1fr]">
-          <div className="space-y-5">
-            <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-sm font-semibold">
-                AF
-              </div>
-              <div>
-                <p className="text-sm font-semibold tracking-[0.2em] uppercase text-white/60">
-                  Ateliê Forma
-                </p>
-                <p className="text-lg font-semibold">
-                  Guia profissional de UI/UX para design de móveis
-                </p>
-              </div>
-            </div>
-            <p className="max-w-xl text-sm leading-7 text-white/72">
-              Conceito digital pensado para transmitir sofisticação, confiança e
-              clareza comercial, com foco em catálogos premium, storytelling
-              visual e experiência impecável em mobile.
+    <footer className="bg-primary text-primary-foreground">
+      <div className="container section-padding">
+        {/* Newsletter Section */}
+        <div className="mb-16 pb-16 border-b border-primary-foreground/20">
+          <h3 className="text-2xl font-bold mb-4">Inscreva-se para Novidades</h3>
+          <p className="text-primary-foreground/80 mb-6 max-w-md">
+            Receba conteúdos exclusivos sobre soluções jurídicas e tendências do mercado de propriedade intelectual.
+          </p>
+          <form className="flex flex-col sm:flex-row gap-3 max-w-md">
+            <input
+              type="email"
+              placeholder="Seu email"
+              className="flex-1 px-4 py-3 rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary-foreground"
+              required
+            />
+            <button
+              type="submit"
+              className="px-6 py-3 bg-primary-foreground text-primary font-semibold rounded-lg hover:opacity-90 transition-opacity"
+            >
+              Inscrever
+            </button>
+          </form>
+        </div>
+
+        {/* Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          {/* About */}
+          <div>
+            <h4 className="text-xl font-bold mb-4">PRCS Advogados</h4>
+            <p className="text-primary-foreground/80 leading-relaxed">
+              Especialistas em propriedade intelectual com 30 anos de experiência protegendo o que importa para seu negócio.
             </p>
-            <div className="flex flex-wrap gap-3 text-sm text-white/72">
-              <span className="rounded-full border border-white/12 px-4 py-2">
-                Imagem profissional
-              </span>
-              <span className="rounded-full border border-white/12 px-4 py-2">
-                Acessibilidade real
-              </span>
-              <span className="rounded-full border border-white/12 px-4 py-2">
-                Microinterações discretas
-              </span>
-            </div>
           </div>
 
+          {/* Services */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold tracking-[0.18em] uppercase text-white/60">
-              Navegação sugerida
-            </h3>
-            <ul className="space-y-3 text-sm text-white/80">
-              {footerLinks.map(link => (
+            <h4 className="text-xl font-bold mb-4">Áreas de Atuação</h4>
+            <ul className="space-y-2">
+              {serviceLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="inline-flex items-center gap-2 transition-colors hover:text-white"
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm"
                   >
                     {link.label}
-                    <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* Contact */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold tracking-[0.18em] uppercase text-white/60">
-              Pontos críticos
-            </h3>
-            <div className="space-y-4 text-sm text-white/80">
-              <p className="flex items-start gap-3">
-                <Mail className="mt-0.5 h-4 w-4" /> CTAs curtas, contato fácil e
-                confiança visual acima da dobra.
-              </p>
-              <p className="flex items-start gap-3">
-                <Smartphone className="mt-0.5 h-4 w-4" /> Layout mobile-first
-                com cards empilhados, sticky actions e imagens otimizadas.
-              </p>
-              <p className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4" /> Contexto espacial do
-                mobiliário reforçado por ambientes, medidas e materiais.
-              </p>
-              <p className="flex items-start gap-3">
-                <Instagram className="mt-0.5 h-4 w-4" /> Integração com
-                portfólio social, bastidores do processo e prova social visual.
-              </p>
+            <h4 className="text-xl font-bold mb-4">Contato</h4>
+            <div className="space-y-3">
+              <div className="flex items-start gap-3">
+                <Phone size={18} className="mt-0.5 flex-shrink-0" />
+                <a
+                  href="tel:+5511940229012"
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                >
+                  (11) 9 4022-9012
+                </a>
+              </div>
+              <div className="flex items-start gap-3">
+                <Mail size={18} className="mt-0.5 flex-shrink-0" />
+                <a
+                  href="mailto:contato@prcs.com.br"
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                >
+                  contato@prcs.com.br
+                </a>
+              </div>
+              <div className="flex items-start gap-3">
+                <MapPin size={18} className="mt-0.5 flex-shrink-0" />
+                <address className="text-primary-foreground/80 not-italic">
+                  Av. Ordem e Progresso, 157<br />
+                  Sala 805, Barra Funda<br />
+                  São Paulo/SP - CEP: 01141-030
+                </address>
+              </div>
+            </div>
+          </div>
+
+          {/* Hours */}
+          <div>
+            <h4 className="text-xl font-bold mb-4">Horário</h4>
+            <div className="space-y-2 text-primary-foreground/80">
+              <p>Segunda a Sexta</p>
+              <p className="font-semibold text-primary-foreground">09:00 - 18:00</p>
+              <p className="mt-4">Atendimento online via WhatsApp</p>
+              <p className="font-semibold text-primary-foreground">24/7</p>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6 text-sm text-white/55">
-          © {currentYear} Ateliê Forma — protótipo conceitual para um site de
-          design de móveis.
+        {/* Copyright */}
+        <div className="border-t border-primary-foreground/20 pt-8">
+          <p className="text-center text-primary-foreground/60 text-sm">
+            © {currentYear} PRCS Advogados. Todos os direitos reservados.
+          </p>
         </div>
       </div>
     </footer>

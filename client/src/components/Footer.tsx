@@ -39,10 +39,19 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* About */}
           <div>
-            <h4 className="text-xl font-bold mb-4">PRCS Advogados</h4>
-            <p className="text-primary-foreground/80 leading-relaxed">
-              Especialistas em propriedade intelectual com 30 anos de experiência protegendo o que importa para seu negócio.
+            <img
+              src="https://prcs.com.br/wp-content/uploads/2025/01/logo-prcs-advogados-e1737015449305.png"
+              alt="PRCS Advogados"
+              className="h-10 w-auto mb-5 opacity-90"
+              onError={(e) => { (e.target as HTMLImageElement).src = '/assets/logo-prcs.svg'; }}
+            />
+            <p className="text-primary-foreground/70 leading-relaxed text-sm">
+              Especialistas em propriedade intelectual com 30 anos de experiência protegendo marcas, patentes e ativos intelectuais.
             </p>
+            <div className="flex gap-3 mt-5">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold" style={{ background: 'var(--gold)', color: 'var(--primary)' }}>OAB</div>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center text-[9px] font-bold border" style={{ color: 'var(--gold)', borderColor: 'var(--gold)' }}>ABA<br/>PI</div>
+            </div>
           </div>
 
           {/* Services */}

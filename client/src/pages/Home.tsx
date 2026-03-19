@@ -1,454 +1,651 @@
-import { ArrowRight, Shield, Users, Zap, Scale, FileText, Lock, Briefcase, ChevronLeft, ChevronRight, Star, ShoppingCart, AlertTriangle, Bell, Globe, Tag, Lightbulb, Code, BookOpen } from 'lucide-react';
+import {
+  ArrowRight, Shield, Users, Zap, Tag, Lightbulb, Code, BookOpen,
+  Briefcase, ChevronRight, Quote, Check, X as XIcon, Phone, MessageCircle,
+} from 'lucide-react';
 import { Link } from 'wouter';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 
+/* ──────────────────────────── Scales SVG ──────────────────────────── */
+function ScalesOfJustice() {
+  return (
+    <svg viewBox="0 0 360 400" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+      {/* Outer decorative rings */}
+      <circle cx="180" cy="190" r="160" fill="none" stroke="#C9A84C" strokeWidth="0.6" opacity="0.25" />
+      <circle cx="180" cy="190" r="130" fill="none" stroke="#C9A84C" strokeWidth="0.4" opacity="0.35" />
+      <circle cx="180" cy="190" r="100" fill="none" stroke="#C9A84C" strokeWidth="0.3" opacity="0.2" />
+
+      {/* Vertical pillar */}
+      <line x1="180" y1="55" x2="180" y2="355" stroke="#C9A84C" strokeWidth="2.5" strokeLinecap="round" />
+
+      {/* Top finial */}
+      <polygon points="180,42 188,58 172,58" fill="#C9A84C" />
+      <circle cx="180" cy="42" r="4" fill="#C9A84C" opacity="0.6" />
+
+      {/* Cross beam */}
+      <line x1="70" y1="118" x2="290" y2="118" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" />
+      {/* Beam ends decoration */}
+      <circle cx="70" cy="118" r="4" fill="#C9A84C" />
+      <circle cx="290" cy="118" r="4" fill="#C9A84C" />
+
+      {/* Left pan cords */}
+      <line x1="82" y1="122" x2="55" y2="198" stroke="#C9A84C" strokeWidth="1.2" opacity="0.8" />
+      <line x1="58" y1="122" x2="85" y2="198" stroke="#C9A84C" strokeWidth="1.2" opacity="0.8" />
+
+      {/* Right pan cords */}
+      <line x1="278" y1="122" x2="305" y2="198" stroke="#C9A84C" strokeWidth="1.2" opacity="0.8" />
+      <line x1="302" y1="122" x2="275" y2="198" stroke="#C9A84C" strokeWidth="1.2" opacity="0.8" />
+
+      {/* Left pan */}
+      <ellipse cx="70" cy="205" rx="52" ry="11" fill="none" stroke="#C9A84C" strokeWidth="1.8" />
+      <path d="M 18 205 Q 70 228 122 205" fill="none" stroke="#C9A84C" strokeWidth="1.8" strokeLinecap="round" />
+
+      {/* Right pan */}
+      <ellipse cx="290" cy="205" rx="52" ry="11" fill="none" stroke="#C9A84C" strokeWidth="1.8" />
+      <path d="M 238 205 Q 290 228 342 205" fill="none" stroke="#C9A84C" strokeWidth="1.8" strokeLinecap="round" />
+
+      {/* Left pan content – book */}
+      <rect x="44" y="192" width="36" height="11" rx="1.5" fill="#C9A84C" opacity="0.25" />
+      <rect x="62" y="192" width="1.5" height="11" fill="#C9A84C" opacity="0.5" />
+
+      {/* Right pan content – coin */}
+      <circle cx="284" cy="197" r="7" fill="none" stroke="#C9A84C" strokeWidth="1.2" opacity="0.6" />
+      <circle cx="296" cy="196" r="5" fill="none" stroke="#C9A84C" strokeWidth="1.2" opacity="0.4" />
+
+      {/* Base column */}
+      <rect x="168" y="352" width="24" height="6" rx="3" fill="#C9A84C" />
+      <rect x="154" y="358" width="52" height="5" rx="2.5" fill="#C9A84C" opacity="0.6" />
+      <rect x="140" y="363" width="80" height="4" rx="2" fill="#C9A84C" opacity="0.3" />
+
+      {/* Decorative dots */}
+      <circle cx="110" cy="82" r="2" fill="#C9A84C" opacity="0.4" />
+      <circle cx="250" cy="82" r="2" fill="#C9A84C" opacity="0.4" />
+      <circle cx="130" cy="310" r="1.5" fill="#C9A84C" opacity="0.3" />
+      <circle cx="230" cy="310" r="1.5" fill="#C9A84C" opacity="0.3" />
+
+      {/* Small star accents */}
+      <text x="92" y="72" fontSize="11" fill="#C9A84C" opacity="0.5" fontFamily="serif">✦</text>
+      <text x="255" y="72" fontSize="11" fill="#C9A84C" opacity="0.5" fontFamily="serif">✦</text>
+    </svg>
+  );
+}
+
+/* ──────────────────────────── Data ──────────────────────────── */
+const services = [
+  {
+    icon: <Tag className="w-7 h-7" />,
+    title: 'Registro de Marca',
+    description: 'Proteção completa de sua marca com registro, defesa e monitoramento em marketplaces.',
+    href: '/registro-marca',
+  },
+  {
+    icon: <Lightbulb className="w-7 h-7" />,
+    title: 'Registro de Patente',
+    description: 'Proteção de invenções com análise de anterioridade, redação e defesa de patentes.',
+    href: '/registro-patente',
+  },
+  {
+    icon: <Code className="w-7 h-7" />,
+    title: 'Registro de Softwares',
+    description: 'Proteção legal de softwares e aplicações com emissão de certificados oficiais.',
+    href: '/registro-software',
+  },
+  {
+    icon: <BookOpen className="w-7 h-7" />,
+    title: 'Direito Autoral',
+    description: 'Proteção de obras criativas com registro e gestão de obrigações acessórias.',
+    href: '/direito-autoral',
+  },
+  {
+    icon: <Briefcase className="w-7 h-7" />,
+    title: 'Assessoria Jurídica',
+    description: 'Consultoria especializada em propriedade intelectual e estratégia de proteção.',
+    href: '/assessoria-juridica',
+  },
+];
+
+const stats = [
+  { number: '30+', label: 'Anos de Experiência' },
+  { number: '6.800+', label: 'Empresas Atendidas' },
+  { number: '11.780+', label: 'Processos de PI' },
+  { number: '98%', label: 'Satisfação dos Clientes' },
+];
+
+const differentials = [
+  {
+    icon: <Shield className="w-8 h-8" />,
+    title: 'Segurança Jurídica 360°',
+    description: 'Proteção completa e estratégica para seus ativos intelectuais com expertise reconhecida no mercado.',
+  },
+  {
+    icon: <Users className="w-8 h-8" />,
+    title: 'Atendimento Humanizado',
+    description: 'Equipe dedicada que entende suas necessidades e busca as melhores soluções personalizadas.',
+  },
+  {
+    icon: <Zap className="w-8 h-8" />,
+    title: 'Agilidade e Tecnologia',
+    description: 'Processos otimizados com tecnologia e monitoramento 24/7 para atender com rapidez e qualidade.',
+  },
+];
+
+const testimonials = [
+  {
+    name: 'Carla Ribeiro',
+    role: 'CEO',
+    initials: 'CR',
+    text: 'Contar com a PRCS Advogados foi um divisor de águas para minha empresa. Eles garantiram a segurança jurídica do nosso negócio e protegeram nossa propriedade intelectual com agilidade e eficiência.',
+  },
+  {
+    name: 'Rafael Kawori',
+    role: 'Gerente de Operações',
+    initials: 'RK',
+    text: 'A consultoria jurídica da PRCS é excepcional. Com soluções claras e atendimento humanizado, conseguimos resolver questões contratuais complexas e focar no crescimento do nosso negócio.',
+  },
+  {
+    name: 'Ana Silva',
+    role: 'Diretora de Marca',
+    initials: 'AS',
+    text: 'O registro de marca com a PRCS foi rápido e seguro. Sua equipe nos orientou em cada etapa e garantiu que nossa marca estivesse completamente protegida. Recomendo a qualquer empresa.',
+  },
+];
+
+const registeredBrands = [
+  { name: 'TechInova', category: 'Tecnologia', initial: 'T' },
+  { name: 'GreenLife', category: 'Sustentabilidade', initial: 'G' },
+  { name: 'ProDental', category: 'Saúde', initial: 'P' },
+  { name: 'FashionHub', category: 'Moda', initial: 'F' },
+  { name: 'EcoPackaging', category: 'Embalagem', initial: 'E' },
+  { name: 'DigitalMax', category: 'Software', initial: 'D' },
+  { name: 'NutriBalance', category: 'Alimentos', initial: 'N' },
+  { name: 'SmartHome', category: 'IoT', initial: 'S' },
+];
+
+/* ──────────────────────────── Component ──────────────────────────── */
 export default function Home() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
-  const [itemsToShow, setItemsToShow] = useState(4);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) setItemsToShow(4);
-      else if (window.innerWidth >= 768) setItemsToShow(2);
-      else setItemsToShow(1);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const services = [
-    {
-      icon: <Tag className="w-12 h-12" />,
-      title: 'Registro de Marca',
-      description: 'Protecao completa de sua marca com registro, defesa e monitoramento em marketplaces.',
-      href: '/registro-marca',
-    },
-    {
-      icon: <Lightbulb className="w-12 h-12" />,
-      title: 'Registro de Patente',
-      description: 'Protecao de invencoes com analise de anterioridade, redacao e defesa de patentes.',
-      href: '/registro-patente',
-    },
-    {
-      icon: <Code className="w-12 h-12" />,
-      title: 'Registro de Softwares',
-      description: 'Protecao legal de softwares e aplicacoes com emissao de certificados oficiais.',
-      href: '/registro-software',
-    },
-    {
-      icon: <BookOpen className="w-12 h-12" />,
-      title: 'Direito Autoral',
-      description: 'Protecao de obras criativas com registro e gestao de obrigacoes acessorias.',
-      href: '/direito-autoral',
-    },
-    {
-      icon: <Briefcase className="w-12 h-12" />,
-      title: 'Assessoria Juridica',
-      description: 'Consultoria especializada em propriedade intelectual e estrategia de protecao de ativos.',
-      href: '/assessoria-juridica',
-    },
-  ];
-
-  const differentials = [
-    {
-      icon: <Shield className="w-16 h-16" />,
-      title: 'Segurança Jurídica',
-      description: 'Proteção completa e estratégica para seus ativos intelectuais com expertise reconhecida.',
-    },
-    {
-      icon: <Users className="w-16 h-16" />,
-      title: 'Atendimento Humanizado',
-      description: 'Equipe dedicada que entende suas necessidades e busca as melhores soluções.',
-    },
-    {
-      icon: <Zap className="w-16 h-16" />,
-      title: 'Agilidade e Eficiência',
-      description: 'Processos otimizados com tecnologia para atender com rapidez e qualidade.',
-    },
-  ];
-
-  const testimonials = [
-    {
-      name: 'Carla Ribeiro',
-      role: 'CEO',
-      avatar: '/assets/avatar-default.svg',
-      text: 'Contar com a PRCS Advogados foi um divisor de águas para minha empresa. Eles não apenas garantiram a segurança jurídica do nosso negócio, como também nos ajudaram a proteger nossa propriedade intelectual com agilidade e eficiência.',
-    },
-    {
-      name: 'Rafael Kawori',
-      role: 'Gerente',
-      avatar: '/assets/avatar-default.svg',
-      text: 'A consultoria jurídica da PRCS é excepcional. Com soluções claras e um atendimento humanizado, conseguimos resolver questões contratuais complexas e focar no crescimento do nosso negócio.',
-    },
-    {
-      name: 'Ana Silva',
-      role: 'Diretora de Marca',
-      avatar: '/assets/avatar-default.svg',
-      text: 'O registro de marca com a PRCS foi rápido e seguro. Sua equipe nos orientou em cada etapa do processo e garantiu que nossa marca estivesse completamente protegida. Recomendo para qualquer empresa que deseja proteger sua identidade.',
-    },
-    {
-      name: 'Márcio Ferreira',
-      role: 'Founder',
-      avatar: '/assets/avatar-default.svg',
-      text: 'Precisava registrar uma patente de uma invenção inovadora e a PRCS fez um trabalho impecável. Desde a análise de anterioridade até a redação final, tudo foi profissional e eficiente.',
-    },
-    {
-      name: 'Juliana Costa',
-      role: 'Gerente de PI',
-      avatar: '/assets/avatar-default.svg',
-      text: 'A PRCS Advogados nos ajudou a proteger toda a nossa cartéra de propriedade intelectual. O monitoramento 24/7 de marcas nos dá tranquilidade e confiabilidade total no mercado.',
-    },
-  ];
-
-  const registeredBrands = [
-    { name: 'TechInova', category: 'Tecnologia', logo: '/assets/brand-default.svg' },
-    { name: 'GreenLife', category: 'Sustentabilidade', logo: '/assets/brand-default.svg' },
-    { name: 'ProDental', category: 'Saúde', logo: '/assets/brand-default.svg' },
-    { name: 'FashionHub', category: 'Moda', logo: '/assets/brand-default.svg' },
-    { name: 'EcoPackaging', category: 'Embalagem', logo: '/assets/brand-default.svg' },
-    { name: 'DigitalMax', category: 'Software', logo: '/assets/brand-default.svg' },
-    { name: 'NutriBalance', category: 'Alimentos', logo: '/assets/brand-default.svg' },
-    { name: 'SmartHome', category: 'IoT', logo: '/assets/brand-default.svg' },
-  ];
-
-  const stats = [
-    { number: '30+', label: 'Anos de Experiência' },
-    { number: '6.800+', label: 'Empresas Atendidas' },
-    { number: '11.780+', label: 'Processos de PI' },
-    { number: '98%', label: 'Taxa de Satisfação' },
-  ];
-
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
-  const nextService = () => {
-    setCurrentServiceIndex((prev) => (prev + 1) % services.length);
-  };
-
-  const prevService = () => {
-    setCurrentServiceIndex((prev) => (prev - 1 + services.length) % services.length);
-  };
-
-  const getVisibleServices = () => {
-    const visible = [];
-    for (let i = 0; i < itemsToShow; i++) {
-      visible.push(services[(currentServiceIndex + i) % services.length]);
-    }
-    return visible;
-  };
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary to-primary/90 text-primary-foreground py-12 md:py-20 lg:py-28">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* ═══════════════ HERO ═══════════════ */}
+      <section className="relative bg-primary overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 hero-pattern opacity-100" />
+
+        {/* Decorative diagonal */}
+        <div
+          className="absolute right-0 top-0 w-1/2 h-full opacity-10"
+          style={{
+            background: 'linear-gradient(135deg, transparent 40%, rgba(201,168,76,0.3) 100%)',
+          }}
+        />
+
+        <div className="container relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-28">
+
+            {/* Left — text */}
             <div>
-              <h1 className="font-bold leading-tight mb-6 text-5xl md:text-6xl">
-                Proteja sua Marca contra a Falsificação
+              <div className="flex items-center gap-3 mb-7">
+                <div className="w-8 h-px bg-gold" />
+                <span className="text-gold text-sm font-semibold tracking-widest uppercase">
+                  Escritório Especializado
+                </span>
+              </div>
+
+              <h1 className="text-white font-bold leading-tight mb-6" style={{ fontSize: 'clamp(2.4rem, 5vw, 3.6rem)' }}>
+                Proteja o Que é Seu.{' '}
+                <span style={{ color: 'var(--gold)' }}>Crescer é Seguro</span>{' '}
+                com a PRCS.
               </h1>
-              <p className="text-primary-foreground/90 mb-8 leading-relaxed text-lg">
-                Monitoramento 24/7, garantindo proteção total de sua propriedade intelectual.
+
+              <p className="text-white/75 mb-10 leading-relaxed text-lg max-w-lg">
+                Há mais de 30 anos protegendo marcas, patentes e propriedade intelectual das empresas que movem o Brasil.
+                Atendimento humanizado, tecnologia de ponta e banca jurídica própria.
               </p>
+
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="#servicos"
-                  className="btn-primary inline-flex items-center justify-center gap-2"
-                >
-                  Conhecer Áreas de Atuação <ArrowRight size={20} />
-                </a>
                 <a
                   href="https://wa.me/5511940229012"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary inline-flex items-center justify-center"
+                  className="btn-primary inline-flex items-center justify-center gap-2 text-base"
                 >
-                  Busca Comentada
+                  <MessageCircle size={18} />
+                  Fale com um Especialista
+                </a>
+                <a
+                  href="#servicos"
+                  className="btn-secondary inline-flex items-center justify-center gap-2 text-base"
+                >
+                  Ver Áreas de Atuação
+                  <ArrowRight size={18} />
                 </a>
               </div>
-            </div>
-            <div className="hidden lg:flex items-center justify-center relative overflow-hidden rounded-2xl shadow-2xl h-96 bg-gradient-to-br from-primary/20 to-primary/40">
-              <img
-                src="/assets/hero-office.svg"
-                alt="Escritório PRCS Advogados"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/20"></div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Differentials Section */}
-      <section className="section-padding bg-secondary">
-        <div className="container">
-          <h2 className="section-title text-center mb-16">Por Que Escolher a PRCS Advogados</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {differentials.map((diff, idx) => (
-              <div key={idx} className="card-service">
-                <div className="text-primary mb-6 p-4 bg-primary/10 rounded-full w-fit">{diff.icon}</div>
-                <h3 className="text-xl font-bold text-primary mb-3">{diff.title}</h3>
-                <p className="text-foreground/70">{diff.description}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Comparison Table */}
-          <div className="mt-20 pt-16 border-t border-primary/20">
-            <h3 className="text-2xl font-bold text-center text-primary mb-12">A Estratégia de Proteção</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Competitors */}
-              <div className="bg-white/50 rounded-lg p-8">
-                <h4 className="text-lg font-bold text-red-600 mb-6">O que nossos concorrentes oferecem:</h4>
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-600 font-bold mt-1">✕</span>
-                    <span className="text-foreground/80">Demora no atendimento de demandas jurídicas</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-600 font-bold mt-1">✕</span>
-                    <span className="text-foreground/80">Cobranças adicionais por serviços básicos</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-600 font-bold mt-1">✕</span>
-                    <span className="text-foreground/80">Processos lentos, burocráticos e sem tecnologia</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-600 font-bold mt-1">✕</span>
-                    <span className="text-foreground/80">Atendimento por profissionais não advogados</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* PRCS Advogados */}
-              <div className="bg-primary/10 rounded-lg p-8 border-2 border-primary">
-                <h4 className="text-lg font-bold text-primary mb-6">O que a PRCS Advogados oferece:</h4>
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary font-bold mt-1">✓</span>
-                    <span className="text-foreground/80">Proteção em marcas e patentes 360º</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary font-bold mt-1">✓</span>
-                    <span className="text-foreground/80">Procedimentos acessórios inclusos</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary font-bold mt-1">✓</span>
-                    <span className="text-foreground/80">Monitoramento automático 24/7</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary font-bold mt-1">✓</span>
-                    <span className="text-foreground/80">Banca jurídica própria</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section - Carousel */}
-      <section id="servicos" className="section-padding relative">
-        <div className="container">
-          <h2 className="section-title text-center mb-16">Nossos Serviços</h2>
-          <div className="relative">
-            {/* Left Arrow - Absolute Position */}
-            <button
-              onClick={prevService}
-              className="absolute -left-8 lg:-left-16 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-lg"
-              aria-label="Serviço anterior"
-            >
-              <ChevronLeft size={24} />
-            </button>
-
-            {/* Services Carousel */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-0">
-              {getVisibleServices().map((service, idx) => (
-                <Link key={idx} href={service.href}>
-                  <a className="card-service group cursor-pointer">
-                    <div className="text-primary mb-4 group-hover:scale-110 transition-transform">
-                      {service.icon}
-                    </div>
-                    <h3 className="text-lg font-bold text-primary mb-3">{service.title}</h3>
-                    <p className="text-foreground/70 mb-4 text-sm">{service.description}</p>
-                    <div className="flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
-                      Saiba Mais <ArrowRight size={16} />
-                    </div>
-                  </a>
-                </Link>
-              ))}
-            </div>
-
-            {/* Right Arrow - Absolute Position */}
-            <button
-              onClick={nextService}
-              className="absolute -right-8 lg:-right-16 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-lg"
-              aria-label="Próximo serviço"
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="bg-primary text-primary-foreground section-padding">
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, idx) => (
-              <div key={idx} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2">{stat.number}</div>
-                <p className="text-primary-foreground/80">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Registered Brands Section */}
-      <section className="section-padding bg-secondary">
-        <div className="container">
-          <h2 className="section-title text-center mb-16">Marcas Registradas e Empresas Atendidas</h2>
-          <p className="text-center text-foreground/70 mb-12 max-w-2xl mx-auto">
-            Conheça algumas das marcas e empresas que confiaram na PRCS Advogados para proteger sua propriedade intelectual
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {registeredBrands.map((brand, idx) => (
-              <div key={idx} className="bg-white rounded-lg p-6 border border-border hover:shadow-lg transition-shadow text-center">
-                <img src={brand.logo} alt={brand.name} className="w-20 h-20 mx-auto mb-4 rounded-lg" />
-                <h3 className="font-bold text-primary text-lg mb-2">{brand.name}</h3>
-                <p className="text-foreground/60 text-sm">{brand.category}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Carousel Section */}
-      <TestimonialsCarousel testimonials={testimonials} />
-
-      {/* About Section */}
-      <section id="sobre" className="section-padding bg-white relative">
-        {/* Floating Certifications */}
-        <div className="absolute top-8 right-8 flex flex-col gap-6">
-          <div className="text-center">
-            <img
-              src="/assets/badge-abapi.svg"
-              alt="ABAPI - Associação Brasileira de Propriedade Intelectual"
-              className="w-24 h-24 mx-auto mb-2 rounded-lg shadow-lg"
-            />
-            <p className="text-xs text-foreground/70 font-semibold">ABAPI</p>
-          </div>
-          <div className="text-center">
-            <img
-              src="/assets/badge-oab.svg"
-              alt="OAB - Ordem dos Advogados do Brasil"
-              className="w-24 h-24 mx-auto mb-2 rounded-lg shadow-lg"
-            />
-            <p className="text-xs text-foreground/70 font-semibold">OAB</p>
-          </div>
-        </div>
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="section-title mb-6">Sobre a PRCS Advogados</h2>
-              <p className="text-foreground/80 mb-6 leading-relaxed">
-                Na PRCS Advogados, somos especialistas em registro de marcas e patentes. Com 30 anos de experiência, protegemos as ideias e invenções que movem seu negócio.
-              </p>
-              <p className="text-foreground/80 mb-8 leading-relaxed">
-                Com uma abordagem humanizada e uso de tecnologia, protegemos suas marcas e patentes com agilidade e eficiência, transformando suas invenções em ativos valiosos para o crescimento empresarial.
-              </p>
-              <div className="bg-secondary p-6 rounded-lg border-l-4 border-primary">
-                <p className="text-foreground/70 italic mb-6">
-                  "Na PRCS Advogados, transformamos desafios legais em oportunidades para o crescimento empresarial. Nosso compromisso é oferecer suporte jurídico estratégico com total dedicação e profissionalismo."
-                </p>
-                <div className="flex items-center gap-4">
-                  <img
-                    src="/assets/paulo-perfil.svg"
-                    alt="Dr. Paulo R C Sousa"
-                    className="w-20 h-20 rounded-full border-3 border-primary flex-shrink-0"
-                  />
-                  <div>
-                    <p className="font-bold text-primary">Paulo R C Sousa</p>
-                    <p className="text-foreground/60">Advogado, CEO</p>
-                  </div>
+              {/* Trust badges */}
+              <div className="flex items-center gap-6 mt-10 pt-8 border-t border-white/10">
+                <div className="text-center">
+                  <p className="text-gold text-xs font-bold uppercase tracking-widest">OAB</p>
+                  <p className="text-white/50 text-xs mt-0.5">Registro Ativo</p>
+                </div>
+                <div className="w-px h-8 bg-white/10" />
+                <div className="text-center">
+                  <p className="text-gold text-xs font-bold uppercase tracking-widest">ABAPI</p>
+                  <p className="text-white/50 text-xs mt-0.5">Associado</p>
+                </div>
+                <div className="w-px h-8 bg-white/10" />
+                <div className="text-center">
+                  <p className="text-gold text-xs font-bold uppercase tracking-widest">30+</p>
+                  <p className="text-white/50 text-xs mt-0.5">Anos no mercado</p>
                 </div>
               </div>
             </div>
-            <div className="bg-secondary rounded-2xl p-8 border border-border">
-              <h3 className="text-2xl font-bold text-primary mb-6">Experiência e Expertise</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    ✓
+
+            {/* Right — Scales illustration */}
+            <div className="hidden lg:flex items-center justify-center">
+              <div className="relative w-80 h-80">
+                {/* Glow */}
+                <div
+                  className="absolute inset-0 rounded-full opacity-10"
+                  style={{ background: 'radial-gradient(circle, var(--gold) 0%, transparent 70%)' }}
+                />
+                <ScalesOfJustice />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats bar */}
+        <div className="relative z-10 border-t border-white/10">
+          <div className="container">
+            <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/10">
+              {stats.map((stat, i) => (
+                <div key={i} className="text-center py-7 px-4">
+                  <div className="text-3xl md:text-4xl font-bold mb-1" style={{ color: 'var(--gold)' }}>
+                    {stat.number}
                   </div>
-                  <div>
-                    <p className="font-semibold text-primary">Equipe jurídica especializada em propriedade intelectual</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    ✓
-                  </div>
-                  <div>
-                    <p className="font-semibold text-primary">Conhecimento jurídico estratégico e atualizado</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    ✓
-                  </div>
-                  <div>
-                    <p className="font-semibold text-primary">Atendimento personalizado e humanizado</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    ✓
-                  </div>
-                  <div>
-                    <p className="font-semibold text-primary">Soluções rápidas e eficientes</p>
-                  </div>
-                </li>
-              </ul>
+                  <p className="text-white/55 text-sm">{stat.label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding bg-primary text-primary-foreground">
-        <div className="container text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Pronto para Proteger Sua Marca?</h2>
-          <p className="text-primary-foreground/90 mb-12 max-w-2xl mx-auto text-lg leading-relaxed">
-            Entre em contato conosco hoje mesmo e agende uma consulta gratuita com nossos especialistas.
+      {/* ═══════════════ SERVICES ═══════════════ */}
+      <section id="servicos" className="section-padding bg-white">
+        <div className="container">
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-px bg-gold" />
+              <span className="text-gold text-sm font-semibold tracking-widest uppercase">O que fazemos</span>
+              <div className="w-8 h-px bg-gold" />
+            </div>
+            <h2 className="section-title">Nossas Áreas de Atuação</h2>
+            <p className="text-foreground/60 max-w-xl mx-auto leading-relaxed">
+              Soluções jurídicas completas em propriedade intelectual para proteger e valorizar seus ativos.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+            {services.map((service, i) => (
+              <Link key={i} href={service.href}>
+                <a className="group block card-service text-center hover:-translate-y-1 transition-all duration-300">
+                  <div
+                    className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5 transition-all duration-300 group-hover:scale-110"
+                    style={{ background: 'rgba(201,168,76,0.12)', color: 'var(--gold)' }}
+                  >
+                    {service.icon}
+                  </div>
+                  <h3 className="font-bold text-primary text-base mb-3 leading-tight">{service.title}</h3>
+                  <p className="text-foreground/60 text-sm leading-relaxed mb-4">{service.description}</p>
+                  <div
+                    className="flex items-center justify-center gap-1.5 text-sm font-semibold group-hover:gap-2.5 transition-all"
+                    style={{ color: 'var(--gold)' }}
+                  >
+                    Saiba mais <ChevronRight size={15} />
+                  </div>
+                </a>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ DIFFERENTIALS ═══════════════ */}
+      <section className="section-padding" style={{ background: '#f4f6fb' }}>
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left — differentials */}
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-px bg-gold" />
+                <span className="text-gold text-sm font-semibold tracking-widest uppercase">Nossos Diferenciais</span>
+              </div>
+              <h2 className="section-title mb-3">Por que escolher a PRCS Advogados?</h2>
+              <p className="text-foreground/60 mb-10 leading-relaxed">
+                Mais de 30 anos de experiência, tecnologia de ponta e uma equipe apaixonada por resultados.
+              </p>
+
+              <div className="space-y-6">
+                {differentials.map((d, i) => (
+                  <div key={i} className="flex gap-5 items-start">
+                    <div
+                      className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
+                      style={{ background: 'rgba(13,32,74,0.07)', color: 'var(--primary)' }}
+                    >
+                      {d.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-primary text-lg mb-1.5">{d.title}</h3>
+                      <p className="text-foreground/65 leading-relaxed">{d.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right — comparison table */}
+            <div>
+              <div className="grid grid-cols-1 gap-4">
+                {/* PRCS */}
+                <div className="bg-primary rounded-2xl p-8 shadow-xl relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-10"
+                    style={{ background: 'radial-gradient(circle, var(--gold) 0%, transparent 70%)', transform: 'translate(30%, -30%)' }} />
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-8 h-8 bg-gold rounded-lg flex items-center justify-center">
+                      <Check className="w-5 h-5 text-primary" />
+                    </div>
+                    <h4 className="text-white font-bold text-lg">PRCS Advogados</h4>
+                  </div>
+                  <ul className="space-y-3">
+                    {[
+                      'Proteção em marcas e patentes 360°',
+                      'Procedimentos acessórios inclusos',
+                      'Monitoramento automático 24/7',
+                      'Banca jurídica própria',
+                      'Atendimento por advogados especializados',
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-white/85">
+                        <Check className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
+                        <span className="text-sm">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Competitors */}
+                <div className="bg-white rounded-2xl p-8 border border-border shadow-sm">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center">
+                      <XIcon className="w-5 h-5 text-red-500" />
+                    </div>
+                    <h4 className="text-foreground/80 font-bold text-lg">O que a concorrência oferece</h4>
+                  </div>
+                  <ul className="space-y-3">
+                    {[
+                      'Demora no atendimento jurídico',
+                      'Cobranças adicionais por serviços básicos',
+                      'Processos lentos e burocráticos',
+                      'Atendimento por não-advogados',
+                      'Sem monitoramento ou proteção contínua',
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-foreground/60">
+                        <XIcon className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ ABOUT ═══════════════ */}
+      <section id="sobre" className="section-padding bg-white">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left visual */}
+            <div className="relative">
+              {/* Background card */}
+              <div
+                className="rounded-2xl p-10 relative overflow-hidden"
+                style={{ background: 'linear-gradient(135deg, #0D204A 0%, #1a3060 100%)' }}
+              >
+                <div className="absolute inset-0 hero-pattern opacity-50" />
+                <div className="relative z-10">
+                  <div className="flex justify-center mb-8">
+                    <div className="w-48 h-48 opacity-80">
+                      <ScalesOfJustice />
+                    </div>
+                  </div>
+                  {/* Quote */}
+                  <div className="border-t border-white/20 pt-7">
+                    <Quote className="w-8 h-8 mb-4 opacity-60" style={{ color: 'var(--gold)' }} />
+                    <p className="text-white/80 italic leading-relaxed text-sm mb-6">
+                      "Transformamos desafios legais em oportunidades de crescimento empresarial. Nosso compromisso é oferecer suporte jurídico estratégico com total dedicação e profissionalismo."
+                    </p>
+                    <div className="flex items-center gap-4">
+                      <div
+                        className="w-14 h-14 rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0"
+                        style={{ background: 'var(--gold)', color: 'var(--primary)' }}
+                      >
+                        PR
+                      </div>
+                      <div>
+                        <p className="text-white font-bold">Paulo R. C. Sousa</p>
+                        <p className="text-white/55 text-sm">Advogado & CEO — OAB/SP</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating certification badges */}
+              <div className="absolute -right-5 top-8 flex flex-col gap-3">
+                <div
+                  className="w-20 h-20 rounded-xl flex flex-col items-center justify-center shadow-xl text-center p-2"
+                  style={{ background: 'var(--gold)' }}
+                >
+                  <p className="text-primary font-black text-xs leading-tight">ABAPI</p>
+                  <p className="text-primary/70 text-[9px] mt-0.5 leading-tight">Associado</p>
+                </div>
+                <div
+                  className="w-20 h-20 rounded-xl flex flex-col items-center justify-center shadow-xl text-center p-2"
+                  style={{ background: '#0D204A', border: '2px solid var(--gold)' }}
+                >
+                  <p style={{ color: 'var(--gold)' }} className="font-black text-xs leading-tight">OAB</p>
+                  <p className="text-white/60 text-[9px] mt-0.5 leading-tight">Ativo</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right text */}
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-px bg-gold" />
+                <span className="text-gold text-sm font-semibold tracking-widest uppercase">Quem somos</span>
+              </div>
+              <h2 className="section-title mb-6">
+                30 anos protegendo o que importa para o seu negócio
+              </h2>
+              <p className="text-foreground/65 mb-5 leading-relaxed">
+                Na PRCS Advogados, somos especialistas em registro de marcas, patentes e propriedade intelectual.
+                Com três décadas de atuação, construímos uma reputação sólida baseada em resultados reais
+                e relacionamentos duradouros.
+              </p>
+              <p className="text-foreground/65 mb-10 leading-relaxed">
+                Nossa abordagem combina profundo conhecimento jurídico com tecnologia de ponta,
+                garantindo que cada cliente receba proteção completa e personalizada para seus ativos intelectuais.
+              </p>
+
+              <ul className="space-y-4 mb-10">
+                {[
+                  'Equipe jurídica especializada em propriedade intelectual',
+                  'Conhecimento jurídico estratégico e atualizado',
+                  'Monitoramento 24/7 de marcas e patentes',
+                  'Atendimento personalizado e humanizado',
+                  'Procedimentos administrativos inclusos sem custo extra',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <div
+                      className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{ background: 'var(--gold)' }}
+                    >
+                      <Check className="w-3 h-3 text-primary" />
+                    </div>
+                    <span className="text-foreground/80 text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="/sobre-nos"
+                className="inline-flex items-center gap-2 font-semibold transition-all duration-200 hover:gap-3"
+                style={{ color: 'var(--gold)' }}
+              >
+                Conheça nossa história completa
+                <ArrowRight size={18} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ CLIENTS ═══════════════ */}
+      <section id="clientes" className="section-padding bg-primary">
+        <div className="container">
+          <div className="text-center mb-14">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-px bg-gold" />
+              <span className="text-gold text-sm font-semibold tracking-widest uppercase">Nossos Clientes</span>
+              <div className="w-8 h-px bg-gold" />
+            </div>
+            <h2 className="text-white font-bold mb-4" style={{ fontFamily: 'Lora, serif', fontSize: '36px' }}>
+              Marcas que Confiaram na PRCS
+            </h2>
+            <p className="text-white/55 max-w-xl mx-auto">
+              Empresas de diferentes segmentos escolheram a PRCS para proteger sua propriedade intelectual.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {registeredBrands.map((brand, i) => (
+              <div
+                key={i}
+                className="rounded-xl p-6 text-center border transition-all duration-300 hover:-translate-y-1 hover:border-gold/50"
+                style={{ background: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,0.1)' }}
+              >
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 font-black text-xl"
+                  style={{ background: 'rgba(201,168,76,0.15)', color: 'var(--gold)' }}
+                >
+                  {brand.initial}
+                </div>
+                <h3 className="text-white font-semibold text-sm mb-1">{brand.name}</h3>
+                <p className="text-white/40 text-xs">{brand.category}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ TESTIMONIALS ═══════════════ */}
+      <section className="section-padding" style={{ background: '#f4f6fb' }}>
+        <div className="container">
+          <div className="text-center mb-14">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-px bg-gold" />
+              <span className="text-gold text-sm font-semibold tracking-widest uppercase">Depoimentos</span>
+              <div className="w-8 h-px bg-gold" />
+            </div>
+            <h2 className="section-title">O que nossos clientes dizem</h2>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            {/* Active testimonial */}
+            <div className="bg-white rounded-2xl p-10 shadow-lg border border-border mb-8 relative">
+              <Quote className="w-10 h-10 absolute top-8 right-8 opacity-10 text-primary" />
+              <p className="text-foreground/75 leading-relaxed text-lg italic mb-8">
+                "{testimonials[activeTestimonial].text}"
+              </p>
+              <div className="flex items-center gap-4">
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0"
+                  style={{ background: 'var(--primary)', color: 'white' }}
+                >
+                  {testimonials[activeTestimonial].initials}
+                </div>
+                <div>
+                  <p className="font-bold text-primary">{testimonials[activeTestimonial].name}</p>
+                  <p className="text-foreground/50 text-sm">{testimonials[activeTestimonial].role}</p>
+                </div>
+                {/* Gold stars */}
+                <div className="ml-auto flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} style={{ color: 'var(--gold)' }}>★</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Dots */}
+            <div className="flex items-center justify-center gap-3">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveTestimonial(i)}
+                  className="rounded-full transition-all duration-200"
+                  style={{
+                    width: i === activeTestimonial ? '28px' : '8px',
+                    height: '8px',
+                    background: i === activeTestimonial ? 'var(--gold)' : '#cbd5e1',
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ CTA ═══════════════ */}
+      <section className="relative bg-primary overflow-hidden">
+        <div className="absolute inset-0 hero-pattern opacity-100" />
+        <div className="container relative z-10 text-center py-20 lg:py-24">
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <div className="w-8 h-px bg-gold" />
+            <span className="text-gold text-sm font-semibold tracking-widest uppercase">Próximo Passo</span>
+            <div className="w-8 h-px bg-gold" />
+          </div>
+          <h2 className="text-white font-bold mb-6 max-w-3xl mx-auto" style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', lineHeight: 1.3 }}>
+            Pronto para Proteger Sua Marca e Seus Ativos?
+          </h2>
+          <p className="text-white/65 mb-10 max-w-2xl mx-auto text-lg leading-relaxed">
+            Agende uma consulta gratuita com nossos especialistas e descubra como podemos transformar seus ativos intelectuais em vantagens competitivas reais.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="https://wa.me/5511940229012"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary inline-flex items-center justify-center gap-2"
+              className="btn-primary inline-flex items-center justify-center gap-2 text-base"
             >
-              Solicitar Proteção Agora
+              <MessageCircle size={18} />
+              Solicitar Consulta Gratuita
             </a>
             <a
-              href="#sobre"
-              className="btn-outline inline-flex items-center justify-center gap-2"
+              href="tel:+5511940229012"
+              className="btn-secondary inline-flex items-center justify-center gap-2 text-base"
             >
-              Fale com um Advogado
+              <Phone size={18} />
+              (11) 9 4022-9012
             </a>
           </div>
         </div>

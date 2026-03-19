@@ -40,12 +40,19 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  /* Gold accent */
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
 }
 
 :root {
   /* PRCS Brand Colors - Converted to OKLCH */
   --primary: oklch(0.2 0.08 265); /* #0D204A - Azul Marinho */
   --primary-foreground: oklch(1 0 0); /* Branco */
+  --gold: oklch(0.72 0.12 85); /* #C9A84C - Ouro */
+  --gold-light: oklch(0.82 0.10 85); /* Ouro claro */
+  --gold-dark: oklch(0.60 0.12 85); /* Ouro escuro */
   --sidebar-primary: oklch(0.2 0.08 265);
   --sidebar-primary-foreground: oklch(1 0 0);
   --chart-1: oklch(0.3 0.08 265);
@@ -206,15 +213,23 @@
 
   /* PRCS Custom Components */
   .btn-primary {
-    @apply px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity;
+    @apply px-8 py-3.5 bg-gold text-primary rounded-lg font-semibold hover:bg-gold-light transition-all duration-200 shadow-md hover:shadow-lg;
+  }
+
+  .btn-primary-navy {
+    @apply px-8 py-3.5 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-all duration-200 shadow-md hover:shadow-lg;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 bg-secondary text-secondary-foreground border border-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-colors;
+    @apply px-8 py-3.5 bg-transparent text-white border-2 border-gold rounded-lg font-semibold hover:bg-gold hover:text-primary transition-all duration-200;
+  }
+
+  .btn-outline {
+    @apply px-8 py-3.5 bg-transparent text-primary border-2 border-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-all duration-200;
   }
 
   .section-padding {
-    @apply py-16 md:py-24 lg:py-32;
+    @apply py-16 md:py-24 lg:py-28;
   }
 
   .section-title {
@@ -232,10 +247,23 @@
   }
 
   .card-service {
-    @apply bg-card text-card-foreground rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow;
+    @apply bg-card text-card-foreground rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border border-border hover:border-gold;
+  }
+
+  .card-premium {
+    @apply bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-l-gold border border-border;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+    color: var(--gold);
+  }
+
+  .gold-divider {
+    @apply w-16 h-1 bg-gold rounded-full;
+  }
+
+  .hero-pattern {
+    background-image: radial-gradient(circle at 1px 1px, rgba(201,168,76,0.15) 1px, transparent 0);
+    background-size: 40px 40px;
   }
 }

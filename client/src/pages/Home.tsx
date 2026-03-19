@@ -244,15 +244,18 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right — Scales illustration */}
+            {/* Right — Courthouse illustration */}
             <div className="hidden lg:flex items-center justify-center">
-              <div className="relative w-80 h-80">
-                {/* Glow */}
-                <div
-                  className="absolute inset-0 rounded-full opacity-10"
-                  style={{ background: 'radial-gradient(circle, var(--gold) 0%, transparent 70%)' }}
+              <div className="relative w-full max-w-lg">
+                {/* Decorative frame */}
+                <div className="absolute -inset-3 rounded-2xl opacity-20" style={{ border: '1px solid var(--gold)' }} />
+                <div className="absolute -inset-6 rounded-2xl opacity-10" style={{ border: '1px solid var(--gold)' }} />
+                <img
+                  src="/assets/courthouse.svg"
+                  alt="Tribunal clássico — PRCS Advogados"
+                  className="w-full rounded-2xl"
+                  style={{ boxShadow: '0 0 60px rgba(201,168,76,0.12)' }}
                 />
-                <ScalesOfJustice />
               </div>
             </div>
           </div>
@@ -414,18 +417,21 @@ export default function Home() {
 
             {/* Left visual */}
             <div className="relative">
-              {/* Background card */}
+              {/* Background card with law library image */}
               <div
-                className="rounded-2xl p-10 relative overflow-hidden"
+                className="rounded-2xl relative overflow-hidden"
                 style={{ background: 'linear-gradient(135deg, #0D204A 0%, #1a3060 100%)' }}
               >
-                <div className="absolute inset-0 hero-pattern opacity-50" />
-                <div className="relative z-10">
-                  <div className="flex justify-center mb-8">
-                    <div className="w-48 h-48 opacity-80">
-                      <ScalesOfJustice />
-                    </div>
-                  </div>
+                {/* Library background image */}
+                <img
+                  src="/assets/law-library.svg"
+                  alt="Biblioteca jurídica"
+                  className="w-full h-56 object-cover object-center opacity-70"
+                />
+                {/* Gradient fade into content below */}
+                <div className="absolute top-0 inset-x-0 h-56 bg-gradient-to-b from-transparent to-primary/90" />
+
+                <div className="relative z-10 p-8">
                   {/* Quote */}
                   <div className="border-t border-white/20 pt-7">
                     <Quote className="w-8 h-8 mb-4 opacity-60" style={{ color: 'var(--gold)' }} />

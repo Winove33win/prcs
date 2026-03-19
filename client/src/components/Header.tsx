@@ -58,6 +58,7 @@ export default function Header() {
                 src="https://prcs.com.br/wp-content/uploads/2025/01/logo-prcs-advogados-e1737015449305.png"
                 alt="PRCS Advogados"
                 className="h-11 w-auto"
+                style={{ filter: 'brightness(0) invert(1)' }}
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = '/assets/logo-prcs.svg';
                 }}

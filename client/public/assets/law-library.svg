@@ -1,0 +1,281 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-label="Biblioteca jurídica com livros de direito">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12100c"/>
+      <stop offset="100%" stop-color="#0c0a08"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b5e22"/>
+      <stop offset="50%" stop-color="#6b4818"/>
+      <stop offset="100%" stop-color="#533810"/>
+    </linearGradient>
+    <linearGradient id="woodH" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a5220"/>
+      <stop offset="100%" stop-color="#5c3e14"/>
+    </linearGradient>
+    <radialGradient id="lampGlow" cx="50%" cy="0%" r="70%">
+      <stop offset="0%"   stop-color="#f0c040" stop-opacity="0.45"/>
+      <stop offset="40%"  stop-color="#c9a84c" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="deskGlow" cx="50%" cy="0%" r="80%">
+      <stop offset="0%"   stop-color="#c9a84c" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="leather" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1c3050"/>
+      <stop offset="100%" stop-color="#111e38"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#1a1208"/>
+      <stop offset="50%"  stop-color="#221608"/>
+      <stop offset="100%" stop-color="#1a1208"/>
+    </linearGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- WALL BACKGROUND -->
+  <rect width="900" height="700" fill="url(#wall)"/>
+
+  <!-- Warm ceiling lamp glow -->
+  <ellipse cx="450" cy="0" rx="500" ry="260" fill="url(#lampGlow)"/>
+
+  <!-- Wainscoting / wall paneling lower -->
+  <rect x="0" y="560" width="900" height="140" fill="#14100a" opacity="0.6"/>
+  <rect x="0" y="558" width="900" height="3" fill="#c9a84c" opacity="0.18"/>
+
+  <!-- WOODEN FLOOR -->
+  <rect x="0" y="620" width="900" height="80" fill="url(#floor)"/>
+  <!-- Floor boards -->
+  <line x1="0" y1="640" x2="900" y2="640" stroke="#2a1c08" stroke-width="1.5"/>
+  <line x1="0" y1="658" x2="900" y2="658" stroke="#2a1c08" stroke-width="1.5"/>
+  <line x1="0" y1="675" x2="900" y2="675" stroke="#2a1c08" stroke-width="1.5"/>
+  <line x1="150" y1="620" x2="150" y2="700" stroke="#1e1408" stroke-width="1"/>
+  <line x1="300" y1="620" x2="300" y2="700" stroke="#1e1408" stroke-width="1"/>
+  <line x1="450" y1="620" x2="450" y2="700" stroke="#1e1408" stroke-width="1"/>
+  <line x1="600" y1="620" x2="600" y2="700" stroke="#1e1408" stroke-width="1"/>
+  <line x1="750" y1="620" x2="750" y2="700" stroke="#1e1408" stroke-width="1"/>
+
+  <!-- ═══════════════ BOOKSHELF STRUCTURE ═══════════════ -->
+  <!-- Outer frame - left post -->
+  <rect x="0"   y="0"   width="20" height="625" fill="url(#wood)"/>
+  <!-- Outer frame - right post -->
+  <rect x="880" y="0"   width="20" height="625" fill="url(#wood)"/>
+  <!-- Inner dividers -->
+  <rect x="297" y="0"   width="16" height="570" fill="url(#wood)"/>
+  <rect x="587" y="0"   width="16" height="570" fill="url(#wood)"/>
+
+  <!-- HORIZONTAL SHELVES (4 shelves + top + bottom) -->
+  <!-- Top cap -->
+  <rect x="0" y="0"   width="900" height="16" fill="url(#woodH)"/>
+  <!-- Shelf 1 -->
+  <rect x="0" y="145" width="900" height="14" fill="url(#woodH)"/>
+  <!-- Shelf 2 -->
+  <rect x="0" y="295" width="900" height="14" fill="url(#woodH)"/>
+  <!-- Shelf 3 -->
+  <rect x="0" y="445" width="900" height="14" fill="url(#woodH)"/>
+  <!-- Bottom of shelves -->
+  <rect x="0" y="570" width="900" height="16" fill="url(#woodH)"/>
+  <!-- Wood edges (light highlight) -->
+  <line x1="0" y1="14"  x2="900" y2="14"  stroke="#a07828" stroke-width="1" opacity="0.6"/>
+  <line x1="0" y1="144" x2="900" y2="144" stroke="#a07828" stroke-width="1" opacity="0.5"/>
+  <line x1="0" y1="294" x2="900" y2="294" stroke="#a07828" stroke-width="1" opacity="0.5"/>
+  <line x1="0" y1="444" x2="900" y2="444" stroke="#a07828" stroke-width="1" opacity="0.5"/>
+
+  <!-- ═══════════════ ROW 1 BOOKS (y 16→145) ═══════════════ -->
+  <!-- Section A (x 20→297) -->
+  <rect x="22"  y="20" width="22" height="122" rx="1" fill="#7a1a1a"/>
+  <rect x="22"  y="20" width="22" height="122" rx="1" fill="none" stroke="#c9a84c" stroke-width="0.6" opacity="0.7"/>
+  <rect x="45"  y="24" width="17" height="118" rx="1" fill="#1a3a7a"/>
+  <rect x="63"  y="20" width="24" height="122" rx="1" fill="#2a6a2a"/>
+  <rect x="88"  y="22" width="18" height="120" rx="1" fill="#7a5a1a"/>
+  <rect x="107" y="20" width="22" height="122" rx="1" fill="#5a1a5a"/>
+  <rect x="130" y="23" width="16" height="119" rx="1" fill="#8a2a1a"/>
+  <rect x="147" y="20" width="20" height="122" rx="1" fill="#1a4a5a"/>
+  <rect x="168" y="21" width="24" height="121" rx="1" fill="#2a2a7a"/>
+  <rect x="193" y="20" width="18" height="122" rx="1" fill="#5a3a1a"/>
+  <rect x="212" y="22" width="22" height="120" rx="1" fill="#1a5a3a"/>
+  <rect x="235" y="20" width="20" height="122" rx="1" fill="#6a1a2a"/>
+  <rect x="256" y="23" width="18" height="119" rx="1" fill="#2a4a2a"/>
+  <rect x="275" y="20" width="20" height="122" rx="1" fill="#4a2a1a"/>
+  <!-- Gold lettering on some spines -->
+  <text x="33"  y="88" font-size="5" fill="#c9a84c" opacity="0.7" transform="rotate(90,33,88)"  font-family="serif">CÓDIGO CIVIL</text>
+  <text x="74"  y="88" font-size="5" fill="#c9a84c" opacity="0.6" transform="rotate(90,74,88)"  font-family="serif">DIREITO PENAL</text>
+  <text x="173" y="88" font-size="5" fill="#c9a84c" opacity="0.6" transform="rotate(90,173,88)" font-family="serif">PROCESSO CIVIL</text>
+
+  <!-- Section B (x 313→587) -->
+  <rect x="313" y="20" width="21" height="122" rx="1" fill="#6a1a1a"/>
+  <rect x="335" y="23" width="19" height="119" rx="1" fill="#1a3060"/>
+  <rect x="355" y="20" width="25" height="122" rx="1" fill="#3a6a1a"/>
+  <rect x="381" y="22" width="17" height="120" rx="1" fill="#8a6a1a"/>
+  <rect x="399" y="20" width="23" height="122" rx="1" fill="#4a1a6a"/>
+  <rect x="423" y="24" width="18" height="118" rx="1" fill="#7a3a1a"/>
+  <rect x="442" y="20" width="22" height="122" rx="1" fill="#1a4a4a"/>
+  <rect x="465" y="21" width="20" height="121" rx="1" fill="#3a3a8a"/>
+  <rect x="486" y="20" width="18" height="122" rx="1" fill="#5a2a1a"/>
+  <rect x="505" y="23" width="22" height="119" rx="1" fill="#1a5a2a"/>
+  <rect x="528" y="20" width="20" height="122" rx="1" fill="#7a1a3a"/>
+  <rect x="549" y="22" width="18" height="120" rx="1" fill="#2a4a3a"/>
+  <rect x="568" y="20" width="18" height="122" rx="1" fill="#4a3a2a"/>
+  <text x="366" y="88" font-size="5" fill="#c9a84c" opacity="0.65" transform="rotate(90,366,88)" font-family="serif">PROPRIEDADE INT.</text>
+  <text x="453" y="88" font-size="5" fill="#c9a84c" opacity="0.6" transform="rotate(90,453,88)"  font-family="serif">DIREITO COMERCIAL</text>
+
+  <!-- Section C (x 603→880) -->
+  <rect x="603" y="20" width="22" height="122" rx="1" fill="#5a1a1a"/>
+  <rect x="626" y="24" width="18" height="118" rx="1" fill="#1a2a6a"/>
+  <rect x="645" y="20" width="24" height="122" rx="1" fill="#2a5a1a"/>
+  <rect x="670" y="22" width="20" height="120" rx="1" fill="#7a5a1a"/>
+  <rect x="691" y="20" width="22" height="122" rx="1" fill="#5a1a5a"/>
+  <rect x="714" y="23" width="16" height="119" rx="1" fill="#8a2a1a"/>
+  <rect x="731" y="20" width="22" height="122" rx="1" fill="#1a4a5a"/>
+  <rect x="754" y="21" width="20" height="121" rx="1" fill="#2a2a7a"/>
+  <rect x="775" y="20" width="18" height="122" rx="1" fill="#5a3a1a"/>
+  <rect x="794" y="22" width="22" height="120" rx="1" fill="#1a5a3a"/>
+  <rect x="817" y="20" width="20" height="122" rx="1" fill="#6a1a2a"/>
+  <rect x="838" y="23" width="18" height="119" rx="1" fill="#3a4a2a"/>
+  <rect x="857" y="20" width="21" height="122" rx="1" fill="#4a2a1a"/>
+  <text x="656" y="88" font-size="5" fill="#c9a84c" opacity="0.6" transform="rotate(90,656,88)" font-family="serif">DIREITO TRIBUTÁRIO</text>
+  <text x="742" y="88" font-size="5" fill="#c9a84c" opacity="0.6" transform="rotate(90,742,88)" font-family="serif">MARCAS E PATENTES</text>
+
+  <!-- ═══════════════ ROW 2 BOOKS (y 309→445) ═══════════════ -->
+  <!-- Section A -->
+  <rect x="22"  y="312" width="20" height="130" rx="1" fill="#1a3a7a"/>
+  <rect x="43"  y="315" width="17" height="127" rx="1" fill="#7a1a2a"/>
+  <rect x="61"  y="312" width="23" height="130" rx="1" fill="#2a5a2a"/>
+  <rect x="85"  y="314" width="19" height="128" rx="1" fill="#6a4a1a"/>
+  <rect x="105" y="312" width="22" height="130" rx="1" fill="#1a1a6a"/>
+  <rect x="128" y="316" width="16" height="126" rx="1" fill="#7a3a2a"/>
+  <rect x="145" y="312" width="21" height="130" rx="1" fill="#1a4a3a"/>
+  <rect x="167" y="313" width="24" height="129" rx="1" fill="#4a2a6a"/>
+  <rect x="192" y="312" width="18" height="130" rx="1" fill="#5a3a1a"/>
+  <rect x="211" y="315" width="22" height="127" rx="1" fill="#1a5a4a"/>
+  <rect x="234" y="312" width="20" height="130" rx="1" fill="#7a1a4a"/>
+  <rect x="255" y="314" width="18" height="128" rx="1" fill="#3a4a1a"/>
+  <rect x="274" y="312" width="21" height="130" rx="1" fill="#4a1a2a"/>
+  <text x="33"  y="384" font-size="5" fill="#c9a84c" opacity="0.6" transform="rotate(90,33,384)"  font-family="serif">CONSTITUIÇÃO</text>
+  <text x="110" y="384" font-size="5" fill="#c9a84c" opacity="0.6" transform="rotate(90,110,384)" font-family="serif">DIREITO DO TRABALHO</text>
+  <!-- Section B -->
+  <rect x="313" y="312" width="22" height="130" rx="1" fill="#7a2a1a"/>
+  <rect x="336" y="315" width="18" height="127" rx="1" fill="#1a3a5a"/>
+  <rect x="355" y="312" width="24" height="130" rx="1" fill="#3a6a2a"/>
+  <rect x="380" y="314" width="19" height="128" rx="1" fill="#7a6a1a"/>
+  <rect x="400" y="312" width="22" height="130" rx="1" fill="#5a1a6a"/>
+  <rect x="423" y="316" width="17" height="126" rx="1" fill="#8a3a1a"/>
+  <rect x="441" y="312" width="22" height="130" rx="1" fill="#1a5a5a"/>
+  <rect x="464" y="313" width="20" height="129" rx="1" fill="#3a3a7a"/>
+  <rect x="485" y="312" width="18" height="130" rx="1" fill="#5a2a2a"/>
+  <rect x="504" y="315" width="23" height="127" rx="1" fill="#1a6a3a"/>
+  <rect x="528" y="312" width="20" height="130" rx="1" fill="#7a1a4a"/>
+  <rect x="549" y="314" width="18" height="128" rx="1" fill="#2a5a4a"/>
+  <rect x="568" y="312" width="18" height="130" rx="1" fill="#4a3a2a"/>
+  <!-- Section C -->
+  <rect x="603" y="312" width="21" height="130" rx="1" fill="#1a3a6a"/>
+  <rect x="625" y="315" width="18" height="127" rx="1" fill="#7a2a2a"/>
+  <rect x="644" y="312" width="25" height="130" rx="1" fill="#2a6a1a"/>
+  <rect x="670" y="314" width="20" height="128" rx="1" fill="#7a6a1a"/>
+  <rect x="691" y="312" width="22" height="130" rx="1" fill="#4a1a5a"/>
+  <rect x="714" y="316" width="16" height="126" rx="1" fill="#8a3a2a"/>
+  <rect x="731" y="312" width="22" height="130" rx="1" fill="#1a5a4a"/>
+  <rect x="754" y="313" width="20" height="129" rx="1" fill="#2a2a8a"/>
+  <rect x="775" y="312" width="18" height="130" rx="1" fill="#5a4a1a"/>
+  <rect x="794" y="315" width="22" height="127" rx="1" fill="#1a6a5a"/>
+  <rect x="817" y="312" width="20" height="130" rx="1" fill="#6a1a3a"/>
+  <rect x="838" y="314" width="18" height="128" rx="1" fill="#3a5a3a"/>
+  <rect x="857" y="312" width="21" height="130" rx="1" fill="#4a3a1a"/>
+
+  <!-- ═══════════════ ROW 3 BOOKS (y 459→570) ═══════════════ -->
+  <!-- Section A -->
+  <rect x="22"  y="462" width="21" height="105" rx="1" fill="#5a1a1a"/>
+  <rect x="44"  y="465" width="17" height="102" rx="1" fill="#1a2a5a"/>
+  <rect x="62"  y="462" width="23" height="105" rx="1" fill="#2a5a1a"/>
+  <rect x="86"  y="464" width="18" height="103" rx="1" fill="#6a5a1a"/>
+  <rect x="105" y="462" width="22" height="105" rx="1" fill="#4a1a5a"/>
+  <rect x="128" y="466" width="15" height="101" rx="1" fill="#7a3a1a"/>
+  <rect x="144" y="462" width="22" height="105" rx="1" fill="#1a4a3a"/>
+  <rect x="167" y="463" width="20" height="104" rx="1" fill="#3a2a6a"/>
+  <rect x="188" y="462" width="18" height="105" rx="1" fill="#5a4a1a"/>
+  <rect x="207" y="465" width="22" height="102" rx="1" fill="#1a5a3a"/>
+  <rect x="230" y="462" width="20" height="105" rx="1" fill="#6a1a3a"/>
+  <rect x="251" y="464" width="18" height="103" rx="1" fill="#3a3a1a"/>
+  <rect x="270" y="462" width="25" height="105" rx="1" fill="#4a2a2a"/>
+  <!-- Section B -->
+  <rect x="313" y="462" width="22" height="105" rx="1" fill="#6a2a1a"/>
+  <rect x="336" y="465" width="17" height="102" rx="1" fill="#1a3a5a"/>
+  <rect x="354" y="462" width="24" height="105" rx="1" fill="#2a5a2a"/>
+  <rect x="379" y="464" width="19" height="103" rx="1" fill="#6a5a1a"/>
+  <rect x="399" y="462" width="22" height="105" rx="1" fill="#4a1a6a"/>
+  <rect x="422" y="466" width="16" height="101" rx="1" fill="#7a4a1a"/>
+  <rect x="439" y="462" width="22" height="105" rx="1" fill="#1a5a4a"/>
+  <rect x="462" y="463" width="20" height="104" rx="1" fill="#2a2a7a"/>
+  <rect x="483" y="462" width="18" height="105" rx="1" fill="#5a3a1a"/>
+  <rect x="502" y="465" width="23" height="102" rx="1" fill="#1a6a2a"/>
+  <rect x="526" y="462" width="20" height="105" rx="1" fill="#6a1a4a"/>
+  <rect x="547" y="464" width="18" height="103" rx="1" fill="#2a4a3a"/>
+  <rect x="566" y="462" width="19" height="105" rx="1" fill="#4a3a2a"/>
+  <!-- Section C -->
+  <rect x="603" y="462" width="22" height="105" rx="1" fill="#1a3a6a"/>
+  <rect x="626" y="465" width="17" height="102" rx="1" fill="#6a2a1a"/>
+  <rect x="644" y="462" width="24" height="105" rx="1" fill="#2a5a1a"/>
+  <rect x="669" y="464" width="20" height="103" rx="1" fill="#6a5a1a"/>
+  <rect x="690" y="462" width="22" height="105" rx="1" fill="#4a1a6a"/>
+  <rect x="713" y="466" width="16" height="101" rx="1" fill="#7a3a2a"/>
+  <rect x="730" y="462" width="22" height="105" rx="1" fill="#1a5a4a"/>
+  <rect x="753" y="463" width="20" height="104" rx="1" fill="#2a2a8a"/>
+  <rect x="774" y="462" width="18" height="105" rx="1" fill="#5a4a1a"/>
+  <rect x="793" y="465" width="22" height="102" rx="1" fill="#1a6a4a"/>
+  <rect x="816" y="462" width="20" height="105" rx="1" fill="#6a1a3a"/>
+  <rect x="837" y="464" width="18" height="103" rx="1" fill="#3a5a2a"/>
+  <rect x="856" y="462" width="22" height="105" rx="1" fill="#4a3a1a"/>
+
+  <!-- ═══════════════ DESK / TABLE ═══════════════ -->
+  <!-- Desk top -->
+  <rect x="180" y="570" width="540" height="22" rx="3" fill="#5a3e14"/>
+  <rect x="180" y="570" width="540" height="5"  rx="2" fill="#7a5620" opacity="0.6"/>
+  <!-- Desk legs -->
+  <rect x="200" y="592" width="16" height="50" rx="2" fill="#4a3210"/>
+  <rect x="684" y="592" width="16" height="50" rx="2" fill="#4a3210"/>
+
+  <!-- Book stack on desk (left) -->
+  <rect x="220" y="548" width="55" height="12" rx="1" fill="#7a1a1a"/>
+  <rect x="222" y="538" width="50" height="12" rx="1" fill="#1a3a7a"/>
+  <rect x="225" y="528" width="48" height="12" rx="1" fill="#2a5a1a"/>
+  <!-- Book bindings highlight -->
+  <rect x="220" y="548" width="55" height="12" rx="1" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- Open book on desk (center) -->
+  <ellipse cx="450" cy="570" rx="90" ry="8" fill="#e8d8b0" opacity="0.85"/>
+  <line x1="450" y1="562" x2="450" y2="578" stroke="#c9a84c" stroke-width="0.8" opacity="0.6"/>
+  <!-- Book pages lines -->
+  <line x1="370" y1="566" x2="448" y2="566" stroke="#c9a84c" stroke-width="0.4" opacity="0.35"/>
+  <line x1="368" y1="570" x2="447" y2="570" stroke="#c9a84c" stroke-width="0.4" opacity="0.35"/>
+  <line x1="372" y1="574" x2="448" y2="574" stroke="#c9a84c" stroke-width="0.4" opacity="0.35"/>
+  <line x1="452" y1="566" x2="528" y2="566" stroke="#c9a84c" stroke-width="0.4" opacity="0.35"/>
+  <line x1="453" y1="570" x2="530" y2="570" stroke="#c9a84c" stroke-width="0.4" opacity="0.35"/>
+  <line x1="452" y1="574" x2="528" y2="574" stroke="#c9a84c" stroke-width="0.4" opacity="0.35"/>
+
+  <!-- DESK LAMP -->
+  <rect x="560" y="520" width="8" height="55" rx="3" fill="#8a7a5a"/>
+  <rect x="540" y="510" width="55" height="8" rx="3" fill="#8a7a5a" transform="rotate(-25,540,510)"/>
+  <ellipse cx="520" cy="500" rx="30" ry="12" fill="#c9a84c" opacity="0.6"/>
+  <ellipse cx="520" cy="500" rx="30" ry="12" fill="#f5e090" opacity="0.3"/>
+  <!-- Lamp light cone -->
+  <ellipse cx="450" cy="570" rx="95" ry="20" fill="url(#deskGlow)"/>
+
+  <!-- QUILL / PEN on desk -->
+  <line x1="480" y1="560" x2="495" y2="575" stroke="#c9a84c" stroke-width="1.5" opacity="0.6"/>
+  <path d="M 480 560 Q 476 554 483 556" fill="#c9a84c" opacity="0.5"/>
+
+  <!-- AMBIENT DUST MOTES (subtle) -->
+  <circle cx="200" cy="100" r="1" fill="#c9a84c" opacity="0.12"/>
+  <circle cx="450" cy="60"  r="1.2" fill="#c9a84c" opacity="0.1"/>
+  <circle cx="700" cy="120" r="0.8" fill="#c9a84c" opacity="0.12"/>
+  <circle cx="330" cy="220" r="1"   fill="#c9a84c" opacity="0.08"/>
+  <circle cx="600" cy="200" r="1.2" fill="#c9a84c" opacity="0.1"/>
+
+  <!-- Slight vignette overlay -->
+  <rect x="0"   y="0" width="60"  height="700" fill="#0c0a08" opacity="0.4"/>
+  <rect x="840" y="0" width="60"  height="700" fill="#0c0a08" opacity="0.4"/>
+</svg>

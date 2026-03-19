@@ -43,6 +43,7 @@ export default function Footer() {
               src="https://prcs.com.br/wp-content/uploads/2025/01/logo-prcs-advogados-e1737015449305.png"
               alt="PRCS Advogados"
               className="h-10 w-auto mb-5 opacity-90"
+              style={{ filter: 'brightness(0) invert(1)' }}
               onError={(e) => { (e.target as HTMLImageElement).src = '/assets/logo-prcs.svg'; }}
             />
             <p className="text-primary-foreground/70 leading-relaxed text-sm">
